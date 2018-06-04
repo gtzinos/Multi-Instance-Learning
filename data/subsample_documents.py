@@ -36,7 +36,7 @@ for ln in docnames:
 			doc_w_lbl.update({x:[d]})
 	d += 1
 	if d%5000 == 0:
-		print d
+		print(d)
 
 numlbls = np.array(numlbls)
 
