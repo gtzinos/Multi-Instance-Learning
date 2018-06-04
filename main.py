@@ -1,26 +1,15 @@
-import numpy as np
+from config.labels import *
+import pandas as pd
+from utils.most_significant import *
+from utils.preprocessing import *
 
-def getLineFrequencies(lineString):
-    frequenciesArray = [int(frequency) for frequency in lineString.split(" ")]
-    return frequenciesArray
-
-def getLabelIndexByFrequency(frequencies, isMin):
-    if isMin:
-        return frequencies.tolist().index(min(frequencies))
-    else:
-        return frequencies.tolist().index(max(frequencies))
 
 def main():
-    labelsFile=open("validData.dat", "r")
+    df = pd.read_csv("test-label", header= None, sep=LABEL_SEPERATOR,
+                 names = LABELS_NAMES)
 
-    allFrequencies = getLineFrequencies(labelsFile.readline())
+    most_significant = getMostSignificantLabel(df)
 
-    for lineString in labelsFile:
-        newFrequencies = getLineFrequencies(lineString)
-        allFrequencies = np.add(allFrequencies, newFrequencies)
-
-    print(allFrequencies)
-
-    print(getLabelIndexByFrequency(allFrequencies, True))
+    print(most_significant)
 
 main()
