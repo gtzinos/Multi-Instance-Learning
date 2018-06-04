@@ -1,4 +1,4 @@
-DATA_PATH = "./data"
+DATA_PATH = "./data/"
 
 TRAIN_DATA_NAME = "train-data.dat"
 TEST_DATA_NAME = "test-data.dat"

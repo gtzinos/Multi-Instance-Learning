@@ -1,15 +1,15 @@
-from config.labels import *
+from config.labels_constants import *
+from config.data_constants import *
+
 import pandas as pd
 from utils.most_significant import *
-from utils.preprocessing import *
 
 
 def main():
-    df = pd.read_csv("test-label", header= None, sep=LABEL_SEPERATOR,
-                 names = LABELS_NAMES)
+    train_most_significant = getMostSignificantLabel(DATA_PATH + TRAIN_LABELS_NAME, LABELS_SEPERATOR, LABELS_NAMES)
+    print("Train Most Significant: ", train_most_significant)
 
-    most_significant = getMostSignificantLabel(df)
-
-    print(most_significant)
+    test_most_significant = getMostSignificantLabel(DATA_PATH + TEST_LABELS_NAME, LABELS_SEPERATOR, LABELS_NAMES)
+    print("Test Most Significant: ", test_most_significant)
 
 main()

@@ -3,8 +3,11 @@ from collections import defaultdict
 import pandas as pd
 import numpy as np
 
-def getMostSignificantLabel(labelDF):
-    shapeOfDF = labelDF.shape
+def getMostSignificantLabel(LABELS_FILE_PATH, LABELS_SEPERATOR, LABELS_NAMES):
+    df = pd.read_csv(LABELS_FILE_PATH, header= None, sep=LABELS_SEPERATOR,
+                 names = LABELS_NAMES)
+
+    shapeOfDF = df.shape
     numberOfColumns = shapeOfDF[1]
     listOfLabelSum = {}
     colNameSumList = defaultdict(list)
