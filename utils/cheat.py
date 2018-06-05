@@ -163,6 +163,8 @@ for c0, svmC in enumerate(clist):
 c0 = np.argmax(vccr)
 bestC = clist[c0]
 
+print("Best C", bestC)
+
 # make prediction on the test set
 test_pred = np.zeros(tlbl.shape)
 temp_sent = np.zeros(gt_sent2.shape)
@@ -186,8 +188,10 @@ def test_model_class(c):
     test_sent_pred[:, c] = temp_sent[slbld_list, c].copy()
 
 
+print("Test Model")
 pool.map(test_model_class, [c for c in range(C)])
 
+print("AUC Started")
 (roc, roc_macro) = compute_auc(test_pred, tlbl)
 
 (roc_sent, roc_sent_macro) = compute_auc(test_sent_pred, gt_sent)
