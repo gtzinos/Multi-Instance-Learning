@@ -6,8 +6,6 @@ def convert_labels_to_binary(input_file_path, most_frequent_index, output_file_p
     fp = open(input_file_path, 'r')
     outfp = open(output_file_path, 'w')
 
-    outfp.write("reference,other\n")
-
     while True:
         ln = fp.readline()
         if len(ln) == 0:
@@ -18,9 +16,9 @@ def convert_labels_to_binary(input_file_path, most_frequent_index, output_file_p
         for index, column in enumerate(columns):
             if index == (most_frequent_index + 1):
                 if column == "1":
-                    outfp.write("1 -1\n")
+                    outfp.write("1 0\n")
                 else:
-                    outfp.write("-1 1\n")
+                    outfp.write("0 1\n")
 
     outfp.close()
     fp.close()
@@ -46,21 +44,11 @@ def convert_sentences_to_binary(input_file_path, most_frequent_index, output_fil
                 # print(part)
                 if index == (most_frequent_index + 1):
                     if column == "1":
-                        outfp.write("<1 -1>")
+                        outfp.write("<1 0>")
                     else:
-                        outfp.write("<-1 1>")
+                        outfp.write("<0 1>")
 
         outfp.write("\n")
 
     outfp.close()
     fp.close()
-
-
-convert_labels_to_binary("../data/train-label.dat", 2,
-                         "../data/new_train-label.dat")
-convert_labels_to_binary("../data/test-label.dat", 2,
-                         "../data/new_test-label.dat")
-
-#convert_sentences_to_binary("../data/train-sentlabel.dat", 2, "../data/new_train-sentlabel.dat")
-convert_sentences_to_binary(
-    "../data/test-sentlabel.dat", 2, "../data/new_test-sentlabel.dat")
