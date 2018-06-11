@@ -21,8 +21,8 @@ def main():
     convert_labels_to_binary(DATA_PATH + TEST_LABELS_NAME, 2,
                             DATA_PATH + "new_" + TEST_LABELS_NAME)
 
-    #convert_sentences_to_binary("../data/train-sentlabel.dat", 2, "../data/new_train-sentlabel.dat")
+    #convert_sentences_to_binary("./data/train-sentlabel.dat", 2, "./data/new_train-sentlabel.dat")
     convert_sentences_to_binary(
-        "../data/test-sentlabel.dat", 2, "../data/new_test-sentlabel.dat")
+        "./data/test-sentlabel.dat", 2, "./data/new_test-sentlabel.dat")
 
 main()
