@@ -22,7 +22,7 @@ fpres = open(resfile, 'w')
 fpres.write('roc roc_sent roc_macro roc_sent_macro fprAUC\n')
 fpres.close
 
-Datapath = '../data'
+Datapath = './data'
 
 trfile = '%s/train-data.dat' % Datapath
 trlblfile = '%s/new_train-label.dat' % Datapath

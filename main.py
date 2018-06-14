@@ -25,4 +25,6 @@ def main():
     convert_sentences_to_binary(
         "./data/test-sentlabel.dat", 2, "./data/new_test-sentlabel.dat")
 
+    import utils.experimentScript
+
 main()
